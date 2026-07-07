@@ -1,4 +1,4 @@
-﻿---
+---
 name: maafw-template-migration
 description: Migrate a legacy MaaFramework project to the create-maa-project scaffold. Use when moving an old MAA-style project with assets/ + deps/ structure and install_*.py CI scripts to the CMP template (maa-project.json, build-release.mjs, sync-runtime.mjs).
 ---

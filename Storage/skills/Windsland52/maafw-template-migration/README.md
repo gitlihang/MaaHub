@@ -1,4 +1,4 @@
-﻿# MaaFW Template Migration
+# MaaFW Template Migration
 
 MaaFramework 老项目迁移到 create-maa-project 脚手架的指南 skill。
 
