@@ -1,3 +1,8 @@
+---
+name: pipeline-testing
+description: 测试 MaaFramework Pipeline JSON 节点、识别结果与设备控制流程，并排查 OCR、ROI 和跨页面导航问题。
+---
+
 # Pipeline Testing Skill
 
 ## 概述

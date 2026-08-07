@@ -6,6 +6,7 @@ import { cn } from '../lib/utils';
 import { sitePath } from '../lib/routes';
 import { FileViewer, type DownloadFile } from './FileViewer';
 import { DownloadSection } from './DownloadSection';
+import { getSkillInstallCommand } from '../lib/skillInstall';
 
 type SkillDetailData = {
   id: string;
@@ -35,8 +36,7 @@ type SkillDetailData = {
 // In a real app, this data would come from the astro page props (fetched from getCollection)
 export function SkillDetailApp({ skillId, skillData, lang = 'zh' }: { skillId: string, skillData: SkillDetailData, lang?: 'zh' | 'en' }) {
   const [currentLang, setCurrentLang] = React.useState(lang);
-  const [isCopied1, setIsCopied1] = React.useState(false);
-  const [isCopied2, setIsCopied2] = React.useState(false);
+  const [isInstallCommandCopied, setIsInstallCommandCopied] = React.useState(false);
 
   const [isClient, setIsClient] = React.useState(false);
 
@@ -59,19 +59,14 @@ export function SkillDetailApp({ skillId, skillData, lang = 'zh' }: { skillId: s
 
   const t = (key: keyof typeof ui['zh']) => ui[currentLang][key];
 
-  const handleCopy1 = () => {
-    navigator.clipboard.writeText(`git clone https://github.com/MaaXYZ/MaaHub.git --depth=1`);
-    setIsCopied1(true);
-    setTimeout(() => setIsCopied1(false), 2000);
-  };
-
-  const handleCopy2 = () => {
-    navigator.clipboard.writeText(`cp -r MaaHub/Storage/skills/${skillData.author}/${skillData.id.split('/')[1]} ./your_agent_skills/`);
-    setIsCopied2(true);
-    setTimeout(() => setIsCopied2(false), 2000);
-  };
-
   const packageName = skillData.id.split('/')[1] || skillData.id;
+  const installCommand = getSkillInstallCommand(skillData.skillName || packageName);
+
+  const handleCopyInstallCommand = () => {
+    navigator.clipboard.writeText(installCommand);
+    setIsInstallCommandCopied(true);
+    setTimeout(() => setIsInstallCommandCopied(false), 2000);
+  };
 
   return (
     <>
@@ -141,28 +136,16 @@ export function SkillDetailApp({ skillId, skillData, lang = 'zh' }: { skillId: s
                     <Terminal className="mr-2 h-4 w-4 text-muted-foreground" />
                     {t('skill.install')}
                   </h3>
-                  <div className="relative mb-2">
-                    <pre className="overflow-x-auto rounded bg-muted p-3 text-xs font-mono whitespace-pre-wrap break-all pr-10">
-                      <code>{`git clone https://github.com/MaaXYZ/MaaHub.git --depth=1`}</code>
-                    </pre>
-                    <button 
-                      onClick={handleCopy1}
-                      className="absolute right-2 top-2 rounded bg-background p-1.5 text-muted-foreground hover:text-foreground border shadow-sm transition-colors"
-                      title="Copy clone command"
-                    >
-                      {isCopied1 ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
-                    </button>
-                  </div>
                   <div className="relative">
                     <pre className="overflow-x-auto rounded bg-muted p-3 text-xs font-mono whitespace-pre-wrap break-all pr-10">
-                      <code>{`cp -r MaaHub/Storage/skills/${skillData.author}/${skillData.id.split('/')[1]} ./your_agent_skills/`}</code>
+                      <code>{installCommand}</code>
                     </pre>
                     <button 
-                      onClick={handleCopy2}
+                      onClick={handleCopyInstallCommand}
                       className="absolute right-2 top-2 rounded bg-background p-1.5 text-muted-foreground hover:text-foreground border shadow-sm transition-colors"
-                      title="Copy copy command"
+                      title="Copy install command"
                     >
-                      {isCopied2 ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
+                      {isInstallCommandCopied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
                     </button>
                   </div>
                 </div>
