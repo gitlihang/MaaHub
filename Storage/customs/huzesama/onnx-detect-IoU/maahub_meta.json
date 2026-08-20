@@ -1,0 +1,20 @@
+{
+  "id": "huzesama/onnx-detect-IoU",
+  "title": "ONNX Detect IoU",
+  "description": "根据MaaFramework内置NeuralNetworkDetect修改的神经网络检测(IoU)。解决检测存在全屏大目标时，细分的小目标少甚至没有的问题。适用于需要搭配用户自定义优先级排序进行细分检测的场景",
+  "author": "huzesama",
+  "source": "MaaWoA",
+  "sourceGithub": "https://github.com/huzesama/MaaHub",
+  "tags": ["custom", "recognition", "onnx","IoU", "python"],
+  "createdAt": "2026-08-20",
+  "updatedAt": "2026-08-20",
+  "version": "0.0.1",
+  "mfwVersion": "5.12.2",
+  "entry": "onnxDetect.py",
+  "readme": "./README.md",
+  "status": "stable",
+  "type": "custom",
+  "language": "python",
+  "runtime": "python 3.14.6",
+  "dependencies": ["maa framework sdk","onnx runtime"]
+}
