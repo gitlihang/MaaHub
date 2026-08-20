@@ -1,0 +1,20 @@
+{
+  "id": "huzesama/swipe-in-box-by-vector",
+  "title": "Swipe in box by vector",
+  "description": "根据识别到的Box向指定方向滑动。解决内置动作swipe在begin和end选择同一node_name并配合target_offset字段时，选点不同导致会朝不同方向滑动的问题。使用场景为不确定位置的大目标列表且没有参照滑动终点的特殊场景。",
+  "author": "huzesama",
+  "source": "MaaWoA",
+  "sourceGithub": "https://github.com/huzesama/MaaHub",
+  "tags": ["custom", "action", "swipe", "python"],
+  "createdAt": "2026-08-20",
+  "updatedAt": "2026-08-20",
+  "version": "0.0.1",
+  "mfwVersion": "5.12.2",
+  "entry": "swipe_inBoxByVector.py",
+  "readme": "./README.md",
+  "status": "stable",
+  "type": "custom",
+  "language": "python",
+  "runtime": "python 3.14.6",
+  "dependencies": ["maa framework sdk"]
+}

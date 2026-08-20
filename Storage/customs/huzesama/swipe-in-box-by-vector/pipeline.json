@@ -1,0 +1,20 @@
+{
+	"自定义Box内滑动": {
+		"recognition": "directHit",
+		"action": {
+			"type": "Custom",
+			"param": {
+				"custom_action": "swipe_inBoxByVector",
+				"custom_action_param": {
+					"node_name": "RecignitionNode",
+					"vector": [
+						0,
+						"50%"
+					],
+					"duration": 300,
+					"random_begin": true
+				}
+			}
+		}
+	}
+}
