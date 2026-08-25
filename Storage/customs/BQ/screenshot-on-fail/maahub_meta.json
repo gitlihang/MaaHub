@@ -1,0 +1,20 @@
+{
+  "id": "BQ/screenshot-on-fail",
+  "title": "Screenshot On Fail",
+  "description": "节点级截图 Sink，每个识别节点完成时自动截图保存，用于调试和排查问题。截图保存为 JPG 格式，最多保留 300 张(可在screenshot_on_fail.py中修改)，环形覆盖旧图。",
+  "author": "BQ",
+  "source": "MDNA",
+  "sourceGithub": "https://github.com/BQOvO/MDNA",
+  "tags": ["custom", "sink", "screenshot", "debug", "utility", "data"],
+  "createdAt": "2026-08-25",
+  "updatedAt": "2026-08-25",
+  "version": "1.0.0",
+  "mfwVersion": "5.12.1",
+  "entry": "main.py",
+  "readme": "./README.md",
+  "status": "stable",
+  "type": "custom",
+  "language": "python",
+  "runtime": "python 3.12.9",
+  "dependencies": ["numpy", "opencv-python"]
+}
